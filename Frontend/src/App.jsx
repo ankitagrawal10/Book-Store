@@ -1,12 +1,15 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
+import Home from "./components/Home/Home";
+import { Route, Routes } from "react-router-dom";
+import Courses from "./components/course/Courses";
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <Banner />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/course" element={<Courses/>} />
+      </Routes>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import Courses from "./components/course/Courses";
 
 function App() {
   return (
-    <div>
+    <div className="dark:bg-slate-900 dark:text-white">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course" element={<Courses/>} />

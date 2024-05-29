@@ -1,38 +1,50 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Login from "./Login";
 import { useForm } from "react-hook-form";
 
-function Login() {
+function Signup() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     // Add your login logic here
   };
-
-  const closeModalAndNavigate = () => {
-    document.getElementById("my_modal_3").close();
-    navigate("/");
-  };
-
   return (
     <>
-      <div className="">
-        <dialog id="my_modal_3" className="modal">
+      <div className="flex h-screen items-center justify-center">
+        <div className="w-[600px]">
           <div className="modal-box dark:bg-slate-900 dark:text-white">
-            <button
-              onClick={closeModalAndNavigate}
+            {/* if there is a button in form, it will close the modal */}
+            <Link
+              to="/"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             >
               ✕
-            </button>
-            <h3 className="font-bold text-lg">Login</h3>
+            </Link>
+
+            <h3 className="font-bold text-lg">Signup</h3>
             <form onSubmit={handleSubmit(onSubmit)} method="dialog">
+              <div className="mt-4 space-y-2">
+                <span>Name</span>
+                <br />
+                <input
+                  type="text"
+                  placeholder="Enter your Full Name"
+                  className="w-80 px-3 py-1 border rounded-md outline-none"
+                  {...register("name", { required: true })}
+                />
+                <br />
+                {errors.name && (
+                  <span className="text-sm text-red-500">
+                    This field is required
+                  </span>
+                )}
+              </div>
               <div className="mt-4 space-y-2">
                 <span>Email</span>
                 <br />
@@ -58,7 +70,6 @@ function Login() {
                   className="w-80 px-3 py-1 border rounded-md outline-none"
                   {...register("password", { required: true })}
                 />
-                <br />
                 {errors.password && (
                   <span className="text-sm text-red-500">
                     This field is required
@@ -66,28 +77,28 @@ function Login() {
                 )}
               </div>
               <div className="flex justify-around mt-4">
-                <button
-                  type="submit"
-                  className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200"
-                >
-                  Login
+                <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
+                  Signup
                 </button>
                 <p>
-                  Not registered?{" "}
-                  <Link
-                    to="/signup"
+                  Have Account?{" "}
+                  <button
                     className="underline text-blue-500 cursor-pointer"
+                    onClick={() =>
+                      document.getElementById("my_modal_3").showModal()
+                    }
                   >
-                    Signup
-                  </Link>
+                    Login
+                  </button>
+                  <Login />
                 </p>
               </div>
             </form>
           </div>
-        </dialog>
+        </div>
       </div>
     </>
   );
 }
 
-export default Login;
+export default Signup;

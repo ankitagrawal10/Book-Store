@@ -2,14 +2,14 @@ import React from "react";
 import Navbar from "../Navbar";
 import Course from "../Course";
 import Footer from "../Footer";
-import list from "../../../public/list.json"
+import list from "../../../public/list.json";
 
 function Courses() {
-    console.log(list);
+  console.log(list);
   return (
     <div>
       <Navbar />
-      <div className="min-h-screen">
+      <div className="min-h-screen ">
         <Course />
       </div>
       <Footer />

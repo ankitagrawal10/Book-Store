@@ -6,7 +6,7 @@ import Footer from "../Footer";
 
 function Home() {
   return (
-    <div>
+    <div className="dark:bg-slate-900">
       <Navbar />
       <Banner />
       <Freebook />

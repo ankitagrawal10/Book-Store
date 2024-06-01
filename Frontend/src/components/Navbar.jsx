@@ -3,7 +3,7 @@ import Login from "./Login";
 
 function Navbar() {
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("them") : "light"
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
 
   const element = document.documentElement;
